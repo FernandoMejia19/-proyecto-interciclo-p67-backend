@@ -13,17 +13,19 @@ public class HoraAsesoria {
     private String hora;
     @Column (name="hora_reservado")
     private char reservado;
-    @Column (name= "hora_id_asesoria_fk")
-    private Integer idAsesoria;
+    @ManyToOne
+    @JoinColumn  (name= "hora_id_asesoria_fk")
+    private Asesoria asesoria;
 
     public HoraAsesoria(){
 
     }
 
-    public HoraAsesoria( String hora, char reservado, Integer idAsesoria) {
+    public HoraAsesoria(Integer id, String hora, char reservado, Asesoria asesoria) {
+        this.id = id;
         this.hora = hora;
         this.reservado = reservado;
-        this.idAsesoria = idAsesoria;
+        this.asesoria = asesoria;
     }
 
     public Integer getId() {
@@ -50,11 +52,11 @@ public class HoraAsesoria {
         this.reservado = reservado;
     }
 
-    public Integer getIdAsesoria() {
-        return idAsesoria;
+    public Asesoria getAsesoria() {
+        return asesoria;
     }
 
-    public void setIdAsesoria(Integer idAsesoria) {
-        this.idAsesoria = idAsesoria;
+    public void setAsesoria(Asesoria asesoria) {
+        this.asesoria = asesoria;
     }
 }

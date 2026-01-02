@@ -19,15 +19,17 @@ public class UsuarioController {
     public List<Usuario> getAll(){
         return usuarioRepository.findAll();
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> getClienteById (@PathVariable Integer id){
-        Usuario u=usuarioRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("No existe el cliente con el ID" + id));
+        Usuario u=usuarioRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("No existe el Usuario con el ID" + id));
         return ResponseEntity.ok(u);
     }
     @PostMapping
     public Usuario crearUsuario(@RequestBody Usuario u){
         return usuarioRepository.save(u);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Usuario> eliminar(@PathVariable Integer id){
         if(!usuarioRepository.existsById(id)){
